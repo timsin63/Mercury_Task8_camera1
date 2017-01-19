@@ -48,7 +48,6 @@ public class PreviewActivity extends AppCompatActivity {
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                file.delete();
                 PreviewActivity.super.onBackPressed();
             }
         });
@@ -62,7 +61,6 @@ public class PreviewActivity extends AppCompatActivity {
         } else {
             MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", "description");
             Toast.makeText(getApplicationContext(), R.string.save_completed, Toast.LENGTH_SHORT).show();
-            file.delete();
             super.onBackPressed();
         }
     }
@@ -75,5 +73,11 @@ public class PreviewActivity extends AppCompatActivity {
             boolean writeAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
             saveToGallery(findViewById(R.id.button_save));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        file.delete();
     }
 }

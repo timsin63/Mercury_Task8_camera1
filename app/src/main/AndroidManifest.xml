@@ -8,6 +8,7 @@
         android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
         android:protectionLevel="normal"
         />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -17,6 +18,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
